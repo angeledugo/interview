@@ -3129,16 +3129,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/event-emitter@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@nestjs/event-emitter@npm:2.0.3"
+"@nestjs/event-emitter@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@nestjs/event-emitter@npm:2.0.4"
   dependencies:
     eventemitter2: "npm:6.4.9"
   peerDependencies:
     "@nestjs/common": ^8.0.0 || ^9.0.0 || ^10.0.0
     "@nestjs/core": ^8.0.0 || ^9.0.0 || ^10.0.0
-    reflect-metadata: ^0.1.12
-  checksum: a37910ef59ea417c3826906e94acaa039c017092950e9dfb361029df51e018feaacb97c15da77c34c853ab40eff3267317137c0a0190b5f023ffd5cd3c128738
+  checksum: 9cc071370ee9fa388dad3fb25e87f47c2cbc77dd1e765c8f2deabb01b4d5b8b2128723d4c4e4872070e4e7dd7f157881a3296ae913b3e56e994de1dc271e443c
   languageName: node
   linkType: hard
 
@@ -4729,7 +4728,7 @@ __metadata:
     "@nestjs/common": "npm:^10.3.0"
     "@nestjs/config": "npm:^3.1.1"
     "@nestjs/core": "npm:^10.3.0"
-    "@nestjs/event-emitter": "npm:^2.0.3"
+    "@nestjs/event-emitter": "npm:^2.0.4"
     "@nestjs/jwt": "npm:^10.2.0"
     "@nestjs/passport": "npm:^10.0.3"
     "@nestjs/platform-express": "npm:^10.0.2"
@@ -4826,6 +4825,7 @@ __metadata:
     orval: "npm:^6.23.0"
     passport: "npm:^0.7.0"
     passport-jwt: "npm:^4.0.1"
+    passport-local: "npm:^1.0.0"
     postcss: "npm:8.4.21"
     prettier: "npm:^3.1.0"
     prettier-plugin-tailwindcss: "npm:^0.5.7"
@@ -19207,6 +19207,15 @@ __metadata:
     jsonwebtoken: "npm:^9.0.0"
     passport-strategy: "npm:^1.0.0"
   checksum: 030ef53632407ff7f4fcbe145b5664f30d5210d8c2834460fe626cca99ea004fd7997c76f1531a061c0f6185d18b2499c059f8933c8efdb51272103ffb6be45d
+  languageName: node
+  linkType: hard
+
+"passport-local@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "passport-local@npm:1.0.0"
+  dependencies:
+    passport-strategy: "npm:1.x.x"
+  checksum: 86dc08b12f05f0ce1bb109780ccb0377eff45bbba70aa9c0d65f092b3ef476d344c0443517db2e9f3e5ec0ca849171ab25fb622164e0f69a677173af42b9bba7
   languageName: node
   linkType: hard
 

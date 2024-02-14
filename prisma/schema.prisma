@@ -9,3 +9,28 @@ datasource db {
   provider = "mysql"
   url      = env("DB_URL")
 }
+
+// Define tus modelos aquí
+// Modelo Usuario
+model Usuario {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  email    String @unique
+  password String
+  role     Role   @default(client)
+  clientId Int    @unique
+  cliente  Client @relation(fields: [clientId], references: [id])
+}
+
+enum Role {
+  admin
+  client
+}
+
+model Client {
+  id       Int      @id @default(autoincrement())
+  firstname String
+  lastname  String
+  address   String
+  Usuario   Usuario?
+}
