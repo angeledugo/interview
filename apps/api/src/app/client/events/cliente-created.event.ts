@@ -1,4 +1,6 @@
+import { CreateUserDto } from "../../auth/dto/create-user.dto";
+
+
 export class ClientCreatedEvent {
-    name: string;
-    description: string;
-  }
+  constructor(public readonly usuario: CreateUserDto) {}
+}

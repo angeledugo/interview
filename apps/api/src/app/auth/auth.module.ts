@@ -17,6 +17,6 @@ import { jwtConstants } from '../constants/constants';
     }),
   ],
   providers: [AuthService, PrismaService, LocalStrategy, JwtStrategy],
-  exports: [JwtStrategy]
+  exports: [JwtStrategy, AuthService]
 })
 export class AuthModule {}

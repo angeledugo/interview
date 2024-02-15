@@ -1,9 +1,14 @@
 import { Module } from '@nestjs/common';
 import { ClientController } from './client.controller';
 import { ClientService } from './services/client.service';
+import { PrismaService } from 'nestjs-prisma';
+import { ClientCreatedListener } from './listeners/client-created.listener';
+import { AuthService } from '../auth/services/auth.service';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   controllers: [ClientController],
-  providers: [ClientService],
+  providers: [PrismaService,ClientService, ClientCreatedListener],
+  imports: [AuthModule]
 })
 export class ClientModule {}
