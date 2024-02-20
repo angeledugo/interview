@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
 }
 
 datasource db {
@@ -18,8 +19,8 @@ model Usuario {
   email    String @unique
   password String
   role     Role   @default(client)
-  clientId Int    @unique
-  cliente  Client @relation(fields: [clientId], references: [id])
+  clientId Int?    @unique
+  cliente  Client? @relation(fields: [clientId], references: [id])
 }
 
 enum Role {
@@ -27,10 +28,34 @@ enum Role {
   client
 }
 
+enum PaymentType {
+  hour
+  monthly
+}
+// Modelo Company
+model Company {
+  id       Int      @id @default(autoincrement())
+  name      String
+  client   Client?
+}
+
+
+model PaymentConfig {
+  id       Int      @id @default(autoincrement())
+  paymentType PaymentType  @default(hour)
+  amount    Float
+  Client Client?
+}
+
+
 model Client {
   id       Int      @id @default(autoincrement())
   firstname String
   lastname  String
-  address   String
-  Usuario   Usuario?
+  address         String
+  Usuario         Usuario?
+  companyId Int   @unique
+  company  Company @relation(fields: [companyId], references: [id])
+  paymentConfigId Int? @unique
+  paymentConfig  PaymentConfig? @relation(fields: [paymentConfigId], references: [id])
 }
