@@ -3,7 +3,6 @@ import { ClientController } from './client.controller';
 import { ClientService } from './services/client.service';
 import { PrismaService } from 'nestjs-prisma';
 import { ClientCreatedListener } from './listeners/client-created.listener';
-import { AuthService } from '../auth/services/auth.service';
 import { AuthModule } from '../auth/auth.module';
 
 @Module({

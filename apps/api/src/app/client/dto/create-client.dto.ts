@@ -1,4 +1,5 @@
-import { IsEmail, IsOptional, IsString, MinLength } from "class-validator";
+import { Type } from "class-transformer";
+import { IsEmail, IsInt, IsOptional, IsString, MinLength } from "class-validator";
 
 export class CreateClientDto {
     
@@ -16,8 +17,7 @@ export class CreateClientDto {
     @MinLength(6)
     address: string;
 
-    
-    @IsString()
-    @MinLength(6)
-    password: string;
+    @Type(() => Number)
+    @IsInt()
+    companyId: number;
 }

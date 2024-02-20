@@ -42,8 +42,9 @@ export class ClientService {
     }
 
     async create(createClientDto: CreateClientDto) {
-        const { email, password, ...clientData } = createClientDto;
-
+        
+        const { email,companyId,  ...clientData } = createClientDto;
+        
         const verification = await this.prisma.usuario.findUnique({ where: { email } });
 
         if (verification) {
@@ -53,16 +54,19 @@ export class ClientService {
               throw new BadRequestException({ codeError: ErrorCode.UNKNOWN });
             }
         }
-        
+        const company = parseInt(companyId.toString());
         try {
           const cliente = await this.prisma.client.create({ 
             data: {
-              ...clientData
+              ...clientData,
+              companyId: company
             }
             
           });
 
-          const clientCreatedEvent = new ClientCreatedEvent({username: "username", email:email, password: password, clientId: cliente.id,role:Role.CLIENT});
+          const username = email.match(/^[^@]+/)[0].replace(/\W/g, '');
+
+          const clientCreatedEvent = new ClientCreatedEvent({username: username, email:email, password: "123456", clientId: cliente.id,role:Role.CLIENT});
 
           this.eventEmitter.emit('client.created', clientCreatedEvent);
 

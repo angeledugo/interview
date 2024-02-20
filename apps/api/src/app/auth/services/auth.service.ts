@@ -22,7 +22,17 @@ export class AuthService {
 
         
 
-        const user = await this.prisma.usuario.findUnique({ where: { email } });
+        const user = await this.prisma.usuario.findUnique(
+            { where: { email },
+            include: {
+                cliente: {
+                    include: {
+                        company: true
+                    }
+                },
+            },   
+         },
+        );
 
         if (!user) {
             throw new UnauthorizedException('UnauthorizedException');
@@ -39,7 +49,10 @@ export class AuthService {
         const payload = {
             id: user.id,
             email: user.email,
-            name: user.nombre
+            name: user.nombre,
+            clientId: user.clientId,
+            role: user.role,
+            companyId: user.cliente.companyId
           };
         
           return { user: {...payload}, token:  this.jwtService.sign(payload) };
